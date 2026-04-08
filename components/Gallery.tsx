@@ -1,7 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import NextImage from "next/image"
+import { useRef } from "react"
 
 const galleryItems = [
   {
@@ -25,9 +26,30 @@ const galleryItems = [
 ]
 
 export default function Gallery() {
+  const containerRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
+
   return (
-    <section id="gallery" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="gallery" ref={containerRef} className="py-24 bg-white relative overflow-hidden">
+      {/* Parallax Background Image */}
+      <motion.div 
+        style={{ y }}
+        className="absolute top-0 left-0 w-full h-[120%] -z-10"
+      >
+        <NextImage
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000"
+          alt="Abstract Network"
+          fill
+          className="object-cover opacity-5"
+        />
+      </motion.div>
+
+      <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Visual Tour</span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">

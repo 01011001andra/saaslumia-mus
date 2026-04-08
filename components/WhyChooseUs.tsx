@@ -65,7 +65,9 @@ export default function WhyChooseUs() {
               <div className="relative">
                 <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-2xl">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-full bg-accent" />
+                    <div className="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center">
+                       <CheckCircle2 className="text-white w-6 h-6" />
+                    </div>
                     <div>
                       <div className="h-4 w-32 bg-white/20 rounded-full mb-2" />
                       <div className="h-3 w-20 bg-white/10 rounded-full" />
@@ -73,7 +75,7 @@ export default function WhyChooseUs() {
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <CheckCircle2 className="text-accent w-5 h-5 shrink-0" />
+                      <CheckCircle2 className="text-primary w-5 h-5 shrink-0" />
                       <div className="h-4 w-full bg-white/10 rounded-full" />
                     </div>
                     <div className="flex items-center gap-3">

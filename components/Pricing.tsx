@@ -54,12 +54,12 @@ export default function Pricing() {
               className={`
                 relative p-10 rounded-[2.5rem] flex flex-col 
                 ${plan.featured 
-                  ? "bg-white shadow-2xl border-4 border-accent z-10 scale-105" 
-                  : "bg-white border-2 border-foreground/5 shadow-xl hover:shadow-2xl transition-shadow"}
+                  ? "bg-white shadow-2xl border-4 border-primary z-10 scale-105" 
+                  : "bg-white/50 backdrop-blur-sm border border-foreground/5 shadow-xl hover:shadow-2xl transition-shadow"}
               `}
             >
               {plan.featured && (
-                <div className="absolute top-0 right-10 -translate-y-1/2 bg-accent text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg">
+                <div className="absolute top-0 right-10 -translate-y-1/2 bg-primary text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg">
                   Most Popular
                 </div>
               )}
@@ -78,8 +78,8 @@ export default function Pricing() {
               <div className="flex-1 space-y-4 mb-10">
                 {plan.features.map((feature, fidx) => (
                   <div key={fidx} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full ${plan.featured ? "bg-accent/10" : "bg-primary/10"} flex items-center justify-center mt-0.5`}>
-                      <Check className={`w-3 h-3 ${plan.featured ? "text-accent" : "text-primary"} stroke-3`} />
+                    <div className={`w-5 h-5 rounded-full ${plan.featured ? "bg-primary/20" : "bg-primary/10"} flex items-center justify-center mt-0.5`}>
+                      <Check className={`w-3 h-3 ${plan.featured ? "text-primary" : "text-primary"} stroke-3`} />
                     </div>
                     <span className="text-foreground/80 font-medium">{feature}</span>
                   </div>
@@ -89,8 +89,8 @@ export default function Pricing() {
               <button className={`
                 w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300
                 ${plan.featured 
-                  ? "bg-accent text-white shadow-xl shadow-accent/20 hover:opacity-90" 
-                  : "bg-foreground/5 text-foreground hover:bg-foreground/10"}
+                  ? "bg-primary text-white shadow-xl shadow-primary/20 hover:opacity-90" 
+                  : "bg-white text-foreground border-2 border-foreground/5 hover:bg-foreground/5"}
               `}>
                 {plan.cta} <ArrowRight className="w-5 h-5" />
               </button>

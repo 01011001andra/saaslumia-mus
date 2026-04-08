@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Users, Rocket, Target } from "lucide-react"
+import NextImage from "next/image"
 
 const aboutMetrics = [
   { label: "Founded", value: "2024", icon: Rocket },
@@ -11,14 +12,14 @@ const aboutMetrics = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-background overflow-hidden">
+    <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Text Content */}
           <div className="lg:w-1/2">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -44,19 +45,25 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Visual Element */}
           <div className="lg:w-1/2 relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white"
+              className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white aspect-4/5"
             >
-              <div className="aspect-square bg-linear-to-br from-primary to-secondary flex items-center justify-center p-12 text-white">
-                <div className="text-center">
-                   <div className="text-6xl font-bold mb-4 italic">&quot;Focus.&quot;</div>
-                   <div className="text-xl font-medium opacity-80">— The Lumina Philosophy</div>
+              <NextImage
+                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
+                alt="Lumina Team Work"
+                fill
+                priority
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-primary/60 to-transparent flex items-end p-12">
+                <div className="text-white">
+                  <div className="text-4xl font-bold mb-2 italic">&quot;Focus.&quot;</div>
+                  <div className="text-lg font-medium opacity-90">— The Lumina Philosophy</div>
                 </div>
               </div>
             </motion.div>

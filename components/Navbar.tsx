@@ -34,42 +34,38 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         className={`
           flex items-center justify-between w-full max-w-7xl px-6 py-3 
-          pointer-events-auto rounded-full transition-all duration-300
-          ${scrolled ? "glass shadow-xl py-2" : "bg-transparent"}
+          pointer-events-auto rounded-full transition-all duration-500 shadow-2xl
+          ${scrolled ? "glass-dark py-2" : "glass"}
         `}
       >
-        {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
             <div className="w-4 h-4 bg-white rounded-sm" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">Lumina</span>
+          <span className={`text-xl font-black tracking-tight transition-colors duration-300 ${scrolled ? "text-white" : "text-foreground"}`}>Lumina</span>
         </div>
 
-        {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-6 text-sm font-bold">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-foreground/80 hover:text-primary transition-colors cursor-pointer"
+              className={`transition-colors duration-300 cursor-pointer ${scrolled ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-primary"}`}
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Action Button */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="text-sm font-bold hover:text-primary transition-colors cursor-pointer">Sign In</button>
-          <button className="btn-flat bg-accent text-white px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg shadow-accent/20">
+          <button className={`text-sm font-bold transition-colors cursor-pointer ${scrolled ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-primary"}`}>Sign In</button>
+          <button className="btn-flat bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
             Get Started <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-2 text-foreground cursor-pointer"
+          className={`lg:hidden p-2 transition-colors cursor-pointer ${scrolled ? "text-white" : "text-foreground"}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
